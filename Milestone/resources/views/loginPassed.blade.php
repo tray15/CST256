@@ -1,0 +1,1 @@
+<?php echo "Login Passed!" . "\n" . "User: " . $username->getUsername() . " "; ?>
