@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserModel;
+use App\Services\Business\SecurityService;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -13,11 +15,14 @@ class UserController extends Controller
     
     public function saveUser(Request $request) {
         //dd(request()->all());
-        
-        $user = new User;
-        $user->username = $request->username;
-        $user->password = $request->password;
-        
-        $user->save();
+        $service = new SecurityService();
+        $user = new UserModel($request->username, $request->password);
+        if ($service->create($user)) {
+            return view('login');
+        }
+        else {
+            return view('registrationFailed');
+        }
+
     }
 }

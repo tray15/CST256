@@ -10,15 +10,14 @@ class SecurityService
     public function login(UserModel $user) {
         $dao = new SecurityDAO();
         $query = $dao->findByUser($user);
-        return (isset($query->ID));
+        return (isset($query->id));
     }
     public function create(UserModel $user) {
         $dao = new SecurityDAO();
-        if ($dao->findByUser($user)->count() > 0) {
+        if ($dao->findByUser($user)) {
             return view('registrationFailed');
         } else {
-            $response = DB::table('users')->insert(['username' => $user['username'], 'password' => $user['password']]);
-            return $response;
+            return $dao->save($user);
         }
     }
 }

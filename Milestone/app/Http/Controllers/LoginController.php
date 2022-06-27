@@ -18,9 +18,10 @@ class LoginController extends Controller
         
         $user = new UserModel($username, $password);
         $result = $securityService->login($user);
+
         if ($result) {
             return view('loginPassed')->with('username', $user);
         }
-        return view('loginFailed');
+        return view('loginFailed')->with('username', $user);
     }
 }
