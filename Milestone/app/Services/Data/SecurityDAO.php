@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\DB;
 
 class SecurityDAO
 {
-    
+    /**
+     * @param UserModel $user
+     * @return mixed
+     */
     public function findByUser(UserModel $user)
     {
         $response = DB::table('users')->where('username', $user->getUsername())->where('password', 
@@ -19,4 +22,3 @@ class SecurityDAO
         return $response;
     }
 }
-
