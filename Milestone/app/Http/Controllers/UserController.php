@@ -14,8 +14,12 @@ class UserController extends Controller
     }
     
     public function saveUser(Request $request) {
-        //dd(request()->all());
         $service = new SecurityService();
+        $username = $request->get("username");
+        $password = $request->get('password');
+
+        $this->validateForm($request);
+
         $user = new UserModel($request->username, $request->password);
         if ($service->create($user)) {
             return view('login');
@@ -23,6 +27,15 @@ class UserController extends Controller
         else {
             return view('registrationFailed');
         }
+    }
 
+    private function validateForm(Request $request)
+    {
+        //Setup Data Validation Rules for Login Form
+        $rules = ['username'=>'Required | Between:4,10 | Alpha',
+            'password' => 'Required | Between:4,10'];
+
+        // Run Data Validation Rules
+        $this->validate($request, $rules);
     }
 }

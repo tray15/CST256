@@ -6,7 +6,7 @@
         <h2>Create Profile</h2>
         <table>
             <tr>
-                <td><input type="hidden" name="id" value="<?php echo $userId ?>"></td>
+                <td><input type="hidden" name="id" value="<?php echo $id ?>"></td>
             </tr>
             <tr>
                 <td>First Name:</td>

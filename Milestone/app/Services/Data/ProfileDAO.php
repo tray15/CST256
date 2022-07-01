@@ -12,7 +12,7 @@ class ProfileDAO
      * @return mixed
      */
     public function findById(int $id) {
-        return DB::table('profiles')->where('id', $id)->first();
+        return DB::table('profiles')->where('user_id', $id)->first();
     }
 
     public function saveProfile(ProfileModel $profile)

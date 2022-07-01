@@ -31,4 +31,7 @@ Route::get('/', function () {
     Route::post('/dologin','LoginController@index');
 
     // Profile routing
-    Route::post('/doCreateProfile', 'ProfileController@saveProfile');
+    Route::get('/createProfile', function() {
+       return view('createProfile')->with('id', session('userid'));
+    })->name('createProfile');
+    Route::post('/doCreateProfile', 'ProfileController@saveProfile')->name('saveProfile');

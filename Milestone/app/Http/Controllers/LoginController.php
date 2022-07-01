@@ -27,10 +27,12 @@ class LoginController extends Controller
             $user = $securityService->findByUser($user);
             $profile = $profileService->findById($user->id);
             if ($profile) {
+                $request->session()->put('userid', $user->id);
                 return view('home');
             }
             else {
-                return view('createProfile')->with('userId', $user->id);
+                $request->session()->put('userid', $user->id);
+                return redirect()->route('createProfile');
             }
         }
         else {
