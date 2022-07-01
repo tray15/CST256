@@ -11,7 +11,9 @@
 |
 */
 //home page
-    Route::get('/', function () {
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
         return view('welcome');
     });
     
@@ -27,3 +29,9 @@
         return view('login');
     });
     Route::post('/dologin','LoginController@index');
+
+    // Profile routing
+    Route::get('/createProfile', function() {
+       return view('createProfile')->with('id', session('userid'));
+    })->name('createProfile');
+    Route::post('/doCreateProfile', 'ProfileController@saveProfile')->name('saveProfile');
