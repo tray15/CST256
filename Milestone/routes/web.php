@@ -16,8 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
         return view('welcome');
     });
-    
-    
+
     //registration routing
     Route::get('/register', function() {
         return view('register');
@@ -35,3 +34,20 @@ Route::get('/', function () {
        return view('createProfile')->with('id', session('userid'));
     })->name('createProfile');
     Route::post('/doCreateProfile', 'ProfileController@saveProfile')->name('saveProfile');
+
+    // Portfolio Routing
+    Route::get('/createPortfolio', 'PortfolioController@displayPortfolioPage')->name('displayPortfolioPage');
+    Route::get('/addEducationForm', function() {
+        return view('addEducationForm');
+    });
+    Route::post('/doCreateEducation', 'PortfolioController@saveEducation');
+    Route::get('/updateEducation/{id}', 'PortfolioController@updateEducationForm');
+    Route::post('/updateEducation/doUpdateEducation', 'PortfolioController@doUpdateEducation');
+    Route::get('/deleteEducation/{id}', 'PortfolioController@deleteEducation');
+    Route::get('/addEmploymentForm', function() {
+        return view('/addEmploymentForm');
+    });
+    Route::post('/doCreateEmployment', 'PortfolioController@saveEmployment');
+    Route::get('/updateEmployment/{id}', 'PortfolioController@updateEmploymentForm');
+    Route::post('/updateEmployment/doUpdateEmployment', 'PortfolioController@doUpdateEmployment');
+    Route::get('/deleteEmployment/{id}', 'PortfolioController@deleteEmployment');

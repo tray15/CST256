@@ -17,7 +17,7 @@ class ProfileDAO
 
     public function saveProfile(ProfileModel $profile)
     {
-        return DB::table('profiles')->insert([
+        return DB::table('profiles')->insertGetId([
             'firstname' => $profile->getFirstname(),
             'lastname' => $profile->getLastname(),
             'address' => $profile->getAddress(),
