@@ -21,9 +21,9 @@ class ProfileController extends Controller
         $this->validateForm($request);
 
         $profile = new ProfileModel($firstname, $lastname, $address, $phone, $email, $user_id);
-        $result = $service->saveProfile($profile);
+        $profileId = $service->saveProfile($profile);
 
-        if ($result){
+        if ($profileId){
             return view('home');
         }
         else {

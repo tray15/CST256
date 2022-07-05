@@ -1,42 +1,43 @@
 @extends('layouts.appmaster')
 @section('title', 'Login Page')
 @section('content')
-    <form action = "doCreateProfile" method = "POST">
-        <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-        <h2>Create Profile</h2>
-        <table>
-            <tr>
-                <td><input type="hidden" name="id" value="<?php echo $id ?>"></td>
-            </tr>
-            <tr>
-                <td>First Name:</td>
-                <td><input type = "text" name = "firstname" /></td>
-                <td><?php echo $errors->first('firstname')?></td>
-            </tr>
-            <tr>
-                <td>Last Name:</td>
-                <td><input type = "text" name = "lastname" /></td>
-                <td><?php echo $errors->first('lastname')?></td>
-            </tr>
-            <tr>
-                <td>Address:</td>
-                <td><input type = "text" name = "address" /></td>
-                <td><?php echo $errors->first('address')?></td>
-            </tr>
-            <tr>
-                <td>Phone:</td>
-                <td><input type = "tel" name = "phone" /></td>
-                <td><?php echo $errors->first('phone')?></td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td><input type = "email" name = "email" /></td>
-                <td><?php echo $errors->first('email')?></td>
-            </tr>
-            <tr>
-                <td colspan = "2" align = "center">
-                    <input type = "submit" value = "submit" />
-                </td>
-        </table>
-    </form>
+    <div class="container-fluid text-center">
+        <h2 class="mt-5">Create Profile</h2>
+        <form action = "doCreateProfile" method = "POST">
+            <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
+            <div class="table mt-5">
+                <div class="row m-2">
+                    <td><input type="hidden" name="id" value="<?php echo $id ?>"></td>
+                </div>
+                <div class="row m-2">
+{{--                    <td>First Name:</td>--}}
+                    <div class="col-lg-4 mx-auto"><input class="form-control" type = "text" name = "firstname" placeholder="First Name"/></div>
+                    <div class="text-danger"><?php echo $errors->first('firstname')?></div>
+                </div>
+                <div class="row m-2">
+{{--                    <td>Last Name:</td>--}}
+                    <div class="col-lg-4 mx-auto"><input class="form-control" type = "text" name = "lastname" placeholder="Last Name"/></div>
+                    <div class="text-danger"><?php echo $errors->first('lastname')?></div>
+                </div>
+                <div class="row m-2">
+{{--                    <td>Address:</td>--}}
+                    <div class="col-lg-4 mx-auto"><input class="form-control" type = "text" name = "address" placeholder="Address"/></div>
+                    <div class="text-danger"><?php echo $errors->first('address')?></div>
+                </div>
+                <div class="row m-2">
+{{--                    <td>Phone:</td>--}}
+                    <div class="col-lg-4 mx-auto"><input class="form-control" type = "tel" name = "phone" placeholder="Phone"/></div>
+                    <div class="text-danger"><?php echo $errors->first('phone')?></div>
+                </div>
+                <div class="row m-2">
+{{--                    <td>Email:</td>--}}
+                    <div class="col-lg-4 mx-auto"><input class="form-control" type = "email" name = "email" placeholder="Email"/></div>
+                    <div class="text-danger"><?php echo $errors->first('email')?></div>
+                </div>
+                <div class="d-grid col-2 mx-auto">
+                    <input class="btn btn-success" type="submit" value="submit" />
+                </div>
+            </div>
+        </form>
+    </div>
 @endsection

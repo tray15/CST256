@@ -28,7 +28,8 @@ class LoginController extends Controller
             $profile = $profileService->findById($user->id);
             if ($profile) {
                 $request->session()->put('userid', $user->id);
-                return view('home');
+                $request->session()->put('username', $user->username);
+                return view('home')->with('firstname', $profile->firstname);
             }
             else {
                 $request->session()->put('userid', $user->id);
