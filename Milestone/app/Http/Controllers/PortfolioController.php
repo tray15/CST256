@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\EducationModel;
@@ -10,21 +9,27 @@ use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
 {
-    public function displayPortfolioPage () {
+
+    public function displayPortfolioPage()
+    {
         $eduService = new EducationService();
         $jobService = new EmploymentService();
         $userid = session('userid');
         $educationRecords = $eduService->findByUserId($userid);
         $jobRecords = $jobService->findAllByUserId($userid);
-        return view('createPortfolio')->with(['records' => $educationRecords, 'jobRecords' => $jobRecords]);
+        return view('createPortfolio')->with([
+            'records' => $educationRecords,
+            'jobRecords' => $jobRecords
+        ]);
     }
 
-    public function saveEducation(Request $request) {
+    public function saveEducation(Request $request)
+    {
         $eduService = new EducationService();
         $userid = session('userid');
         $id = "";
         $school = $request->get('name');
-        $address =$request->get('address');
+        $address = $request->get('address');
         $phone = $request->get('phone');
         $degree = $request->get('degree');
         $start = $request->get('start_date');
@@ -37,17 +42,19 @@ class PortfolioController extends Controller
         return redirect()->route('displayPortfolioPage');
     }
 
-    public function updateEducationForm($id) {
+    public function updateEducationForm($id)
+    {
         $service = new EducationService();
         $educationRecord = $service->findById($id);
         return view('updateEducationForm')->with('record', $educationRecord);
     }
 
-    public function doUpdateEducation(Request $request) {
+    public function doUpdateEducation(Request $request)
+    {
         $eduService = new EducationService();
         $id = $request->get('id');
         $school = $request->get('name');
-        $address =$request->get('address');
+        $address = $request->get('address');
         $phone = $request->get('phone');
         $degree = $request->get('degree');
         $start = $request->get('start_date');
@@ -59,16 +66,17 @@ class PortfolioController extends Controller
         $row = $eduService->updateEducation($edu);
 
         return redirect()->route('displayPortfolioPage');
-
     }
 
-    public function deleteEducation(int $id) {
+    public function deleteEducation(int $id)
+    {
         $service = new EducationService();
         $service->deleteEducation($id);
         return redirect()->route('displayPortfolioPage');
     }
 
-    public function saveEmployment(Request $request){
+    public function saveEmployment(Request $request)
+    {
         $empService = new EmploymentService();
         $id = $request->get('id');
         $start_date = $request->get('start_date');
@@ -87,13 +95,15 @@ class PortfolioController extends Controller
         return redirect()->route('displayPortfolioPage');
     }
 
-    public function updateEmploymentForm($id){
+    public function updateEmploymentForm($id)
+    {
         $service = new EmploymentService();
         $jobRecord = $service->findById($id);
         return view('updateEmploymentForm')->with('record', $jobRecord);
     }
 
-    public function doUpdateEmployment(Request $request) {
+    public function doUpdateEmployment(Request $request)
+    {
         $empService = new EmploymentService();
         $id = $request->get('id');
         $start_date = $request->get('start_date');
@@ -112,7 +122,8 @@ class PortfolioController extends Controller
         return redirect()->route('displayPortfolioPage');
     }
 
-    public function deleteEmployment($id) {
+    public function deleteEmployment($id)
+    {
         $service = new EmploymentService();
         $service->deleteEmployment($id);
         return redirect()->route('displayPortfolioPage');
@@ -120,7 +131,7 @@ class PortfolioController extends Controller
 
     private function validateSchoolForm(Request $request)
     {
-        //Setup Data Validation Rules for Create Profile Form
+        // Setup Data Validation Rules for Create Profile Form
         $rules = [
             'start_date' => 'Required',
             'end_date' => 'Required',

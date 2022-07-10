@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Services\Data;
 
 use App\Models\ProfileModel;
@@ -7,11 +6,14 @@ use Illuminate\Support\Facades\DB;
 
 class ProfileDAO
 {
+
     /**
+     *
      * @param int $id
      * @return mixed
      */
-    public function findById(int $id) {
+    public function findById(int $id)
+    {
         return DB::table('profiles')->where('user_id', $id)->first();
     }
 

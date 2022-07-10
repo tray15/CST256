@@ -1,33 +1,55 @@
 <?php
-
 namespace App\Models;
 
 class EmploymentModel
 {
+
     private $id;
+
     private $company_name;
+
     private $address;
+
     private $phone;
+
     private $job_title;
+
     private $duties;
+
     private $supervisor;
+
     private $separation_reason;
+
     private $start_date;
+
     private $end_date;
+
     private $userid;
 
     /**
-     * @param $id
-     * @param $company_name
-     * @param $address
-     * @param $phone
-     * @param $job_title
-     * @param $duties
-     * @param $supervisor
-     * @param $separation_reason
-     * @param $start_date
-     * @param $end_date
-     * @param $userid
+     *
+     * @param
+     *            $id
+     * @param
+     *            $company_name
+     * @param
+     *            $address
+     * @param
+     *            $phone
+     * @param
+     *            $job_title
+     * @param
+     *            $duties
+     * @param
+     *            $supervisor
+     * @param
+     *            $separation_reason
+     * @param
+     *            $start_date
+     * @param
+     *            $end_date
+     * @param
+     *            $userid
      */
     public function __construct($id, $company_name, $address, $phone, $job_title, $duties, $supervisor, $separation_reason, $start_date, $end_date, $userid)
     {
@@ -45,6 +67,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getId()
@@ -53,6 +76,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @param mixed $id
      */
     public function setId($id)
@@ -61,6 +85,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getCompanyName()
@@ -69,6 +94,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @param mixed $company_name
      */
     public function setCompanyName($company_name)
@@ -77,6 +103,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getAddress()
@@ -85,6 +112,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @param mixed $address
      */
     public function setAddress($address)
@@ -93,6 +121,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getPhone()
@@ -101,6 +130,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @param mixed $phone
      */
     public function setPhone($phone)
@@ -109,6 +139,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getJobTitle()
@@ -117,6 +148,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @param mixed $job_title
      */
     public function setJobTitle($job_title)
@@ -125,6 +157,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getDuties()
@@ -133,6 +166,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @param mixed $duties
      */
     public function setDuties($duties)
@@ -141,6 +175,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getSupervisor()
@@ -149,6 +184,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @param mixed $supervisor
      */
     public function setSupervisor($supervisor)
@@ -157,6 +193,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getSeparationReason()
@@ -165,6 +202,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @param mixed $separation_reason
      */
     public function setSeparationReason($separation_reason)
@@ -173,6 +211,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getStartDate()
@@ -181,6 +220,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @param mixed $start_date
      */
     public function setStartDate($start_date)
@@ -189,6 +229,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getEndDate()
@@ -197,6 +238,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @param mixed $end_date
      */
     public function setEndDate($end_date)
@@ -205,6 +247,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getUserid()
@@ -213,6 +256,7 @@ class EmploymentModel
     }
 
     /**
+     *
      * @param mixed $userid
      */
     public function setUserid($userid)

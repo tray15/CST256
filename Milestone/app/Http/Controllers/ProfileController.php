@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\ProfileModel;
@@ -8,7 +7,9 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function saveProfile(Request $request) {
+
+    public function saveProfile(Request $request)
+    {
         $service = new ProfileService();
 
         $firstname = $request->get('firstname');
@@ -23,18 +24,18 @@ class ProfileController extends Controller
         $profile = new ProfileModel($firstname, $lastname, $address, $phone, $email, $user_id);
         $profileId = $service->saveProfile($profile);
 
-        if ($profileId){
+        if ($profileId) {
             return view('home');
-        }
-        else {
+        } else {
             return view('loginFailed');
         }
     }
 
     private function validateForm(Request $request)
     {
-        //Setup Data Validation Rules for Create Profile Form
-        $rules = ['firstname'=>'Required | Between:4,10 | alpha',
+        // Setup Data Validation Rules for Create Profile Form
+        $rules = [
+            'firstname' => 'Required | Between:4,10 | alpha',
             'lastname' => 'Required | Between:4,20 | alpha',
             'address' => 'Required | Between:4,40 | String',
             'phone' => 'Required | regex:/^(\+0?1\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/',

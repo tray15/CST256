@@ -1,27 +1,43 @@
 <?php
-
 namespace App\Models;
 
 class EducationModel
 {
+
     private $id;
+
     private $school_name;
+
     private $address;
+
     private $phone;
+
     private $degree;
+
     private $start_date;
+
     private $end_date;
+
     private $user_id;
 
     /**
-     * @param $id
-     * @param $school_name
-     * @param $address
-     * @param $phone
-     * @param $degree
-     * @param $start_date
-     * @param $end_date
-     * @param $user_id
+     *
+     * @param
+     *            $id
+     * @param
+     *            $school_name
+     * @param
+     *            $address
+     * @param
+     *            $phone
+     * @param
+     *            $degree
+     * @param
+     *            $start_date
+     * @param
+     *            $end_date
+     * @param
+     *            $user_id
      */
     public function __construct($id, $school_name, $address, $phone, $degree, $start_date, $end_date, $user_id)
     {
@@ -36,6 +52,7 @@ class EducationModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getId()
@@ -44,6 +61,7 @@ class EducationModel
     }
 
     /**
+     *
      * @param mixed $id
      */
     public function setId($id)
@@ -52,6 +70,7 @@ class EducationModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getSchoolName()
@@ -60,6 +79,7 @@ class EducationModel
     }
 
     /**
+     *
      * @param mixed $school_name
      */
     public function setSchoolName($school_name)
@@ -68,6 +88,7 @@ class EducationModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getAddress()
@@ -76,6 +97,7 @@ class EducationModel
     }
 
     /**
+     *
      * @param mixed $address
      */
     public function setAddress($address)
@@ -84,6 +106,7 @@ class EducationModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getPhone()
@@ -92,6 +115,7 @@ class EducationModel
     }
 
     /**
+     *
      * @param mixed $phone
      */
     public function setPhone($phone)
@@ -100,6 +124,7 @@ class EducationModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getDegree()
@@ -108,6 +133,7 @@ class EducationModel
     }
 
     /**
+     *
      * @param mixed $degree
      */
     public function setDegree($degree)
@@ -116,6 +142,7 @@ class EducationModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getStartDate()
@@ -124,6 +151,7 @@ class EducationModel
     }
 
     /**
+     *
      * @param mixed $start_date
      */
     public function setStartDate($start_date)
@@ -132,6 +160,7 @@ class EducationModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getEndDate()
@@ -140,6 +169,7 @@ class EducationModel
     }
 
     /**
+     *
      * @param mixed $end_date
      */
     public function setEndDate($end_date)
@@ -148,6 +178,7 @@ class EducationModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getUserId()
@@ -156,11 +187,11 @@ class EducationModel
     }
 
     /**
+     *
      * @param mixed $user_id
      */
     public function setUserId($user_id)
     {
         $this->user_id = $user_id;
     }
-
 }

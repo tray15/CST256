@@ -1,23 +1,35 @@
 <?php
-
 namespace App\Models;
 
 class ProfileModel
 {
+
     private $firstname;
+
     private $lastname;
+
     private $address;
+
     private $phone;
+
     private $email;
+
     private $user_id;
 
     /**
-     * @param $firstname
-     * @param $lastname
-     * @param $address
-     * @param $phone
-     * @param $email
-     * @param $user_id
+     *
+     * @param
+     *            $firstname
+     * @param
+     *            $lastname
+     * @param
+     *            $address
+     * @param
+     *            $phone
+     * @param
+     *            $email
+     * @param
+     *            $user_id
      */
     public function __construct($firstname, $lastname, $address, $phone, $email, $user_id)
     {
@@ -30,6 +42,7 @@ class ProfileModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getFirstname()
@@ -38,6 +51,7 @@ class ProfileModel
     }
 
     /**
+     *
      * @param mixed $firstname
      */
     public function setFirstname($firstname)
@@ -46,6 +60,7 @@ class ProfileModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getLastname()
@@ -54,6 +69,7 @@ class ProfileModel
     }
 
     /**
+     *
      * @param mixed $lastname
      */
     public function setLastname($lastname)
@@ -62,6 +78,7 @@ class ProfileModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getAddress()
@@ -70,6 +87,7 @@ class ProfileModel
     }
 
     /**
+     *
      * @param mixed $address
      */
     public function setAddress($address)
@@ -78,6 +96,7 @@ class ProfileModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getPhone()
@@ -86,6 +105,7 @@ class ProfileModel
     }
 
     /**
+     *
      * @param mixed $phone
      */
     public function setPhone($phone)
@@ -94,6 +114,7 @@ class ProfileModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getEmail()
@@ -102,6 +123,7 @@ class ProfileModel
     }
 
     /**
+     *
      * @param mixed $email
      */
     public function setEmail($email)
@@ -110,6 +132,7 @@ class ProfileModel
     }
 
     /**
+     *
      * @return mixed
      */
     public function getUserId()
@@ -118,6 +141,7 @@ class ProfileModel
     }
 
     /**
+     *
      * @param mixed $user_id
      */
     public function setUserId($user_id)

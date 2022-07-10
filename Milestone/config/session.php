@@ -1,20 +1,19 @@
 <?php
-
 return [
 
     /*
-    |--------------------------------------------------------------------------
-    | Default Session Driver
-    |--------------------------------------------------------------------------
-    |
-    | This option controls the default session "driver" that will be used on
-    | requests. By default, we will use the lightweight native driver but
-    | you may specify any of the other wonderful drivers provided here.
-    |
-    | Supported: "file", "cookie", "database", "apc",
-    |            "memcached", "redis", "array"
-    |
-    */
+     * |--------------------------------------------------------------------------
+     * | Default Session Driver
+     * |--------------------------------------------------------------------------
+     * |
+     * | This option controls the default session "driver" that will be used on
+     * | requests. By default, we will use the lightweight native driver but
+     * | you may specify any of the other wonderful drivers provided here.
+     * |
+     * | Supported: "file", "cookie", "database", "apc",
+     * | "memcached", "redis", "array"
+     * |
+     */
 
     'driver' => env('SESSION_DRIVER', 'file'),
 
@@ -109,7 +108,10 @@ return [
     |
     */
 
-    'lottery' => [2, 100],
+    'lottery' => [
+        2,
+        100
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -122,10 +124,7 @@ return [
     |
     */
 
-    'cookie' => env(
-        'SESSION_COOKIE',
-        str_slug(env('APP_NAME', 'laravel'), '_').'_session'
-    ),
+    'cookie' => env('SESSION_COOKIE', str_slug(env('APP_NAME', 'laravel'), '_') . '_session'),
 
     /*
     |--------------------------------------------------------------------------
@@ -192,6 +191,5 @@ return [
     |
     */
 
-    'same_site' => null,
-
+    'same_site' => null
 ];

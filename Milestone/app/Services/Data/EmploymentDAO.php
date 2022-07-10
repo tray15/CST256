@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Services\Data;
 
 use App\Models\EducationModel;
@@ -8,7 +7,9 @@ use Illuminate\Support\Facades\DB;
 
 class EmploymentDAO
 {
-    public function saveEmployment(EmploymentModel $job) {
+
+    public function saveEmployment(EmploymentModel $job)
+    {
         return DB::table('job_hist')->insertGetId([
             'id' => $job->getId(),
             'company_name' => $job->getCompanyName(),
@@ -29,13 +30,15 @@ class EmploymentDAO
         return DB::table('job_hist')->where('user_id', $userid)->get();
     }
 
-    public function findById(int $id) {
+    public function findById(int $id)
+    {
         return DB::table('job_hist')->where('id', $id)->first();
     }
 
     public function updateEmployment(EmploymentModel $job)
     {
-        return DB::table('job_hist')->where('id', $job->getId())->update([
+        return DB::table('job_hist')->where('id', $job->getId())
+            ->update([
             'company_name' => $job->getCompanyName(),
             'address' => $job->getAddress(),
             'phone' => $job->getPhone(),
