@@ -60,6 +60,9 @@ class GroupController extends Controller
         $description = $request->description;
         $profileId = session('profileid');
         $groupModel = new GroupModel($id, $name, $category, $description, $profileId);
+
+        $this->validateCreateGroupForm($request);
+
         $row = $this->groupService->updateGroup($groupModel);
 
         return redirect(route('displayGroupsPage'));

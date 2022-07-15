@@ -119,6 +119,8 @@ class PortfolioController extends Controller
         $separation_reason = $request->get('separation');
         $user_id = session('userid');
 
+        $this->validateEmploymentForm($request);
+
         $job = new EmploymentModel($id, $company_name, $address, $phone, $job_title, $duties, $supervisor, $separation_reason, $start_date, $end_date, $user_id);
         $empService->updateEmployment($job);
         return redirect()->route('displayPortfolioPage');

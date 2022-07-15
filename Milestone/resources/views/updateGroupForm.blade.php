@@ -8,7 +8,7 @@
 
         <form action = "doUpdateGroup" method = "POST">
             <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-            <div class="table mt-5">
+            <div class="table mt-5 text-center">
                 <div class="row m-2">
                     <div><input type="hidden" name="id" value="@php echo $group->getId(); @endphp"/></div>
                     <div class="col-lg-4 mx-auto"><input class="form-control" type = "text" name = "name" value="@php echo $group->getName(); @endphp "/></div>
