@@ -19,16 +19,17 @@ class LoginController extends Controller
         // Validate form
         $this->validateForm($request);
 
-        $user = new UserModel($username, $password);
+        $user = new UserModel($username, $password, "", "");
         $result = $securityService->login($user);
 
         if ($result) {
             // return view('loginPassed')->with('username', $user);
             $user = $securityService->findByUser($user);
-            $profile = $profileService->findById($user->id);
+            $profile = $profileService->findByUserId($user->id);
             if ($profile) {
                 $request->session()->put('userid', $user->id);
                 $request->session()->put('username', $user->username);
+                $request->session()->put('profileid', $profile->id);
                 return view('home')->with('firstname', $profile->firstname);
             } else {
                 $request->session()->put('userid', $user->id);

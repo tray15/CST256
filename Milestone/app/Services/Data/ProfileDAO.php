@@ -6,13 +6,16 @@ use Illuminate\Support\Facades\DB;
 
 class ProfileDAO
 {
+    public function findById($id) {
+        return DB::table('profiles')->where('id', $id)->first();
+    }
 
     /**
      *
      * @param int $id
      * @return mixed
      */
-    public function findById(int $id)
+    public function findByUserId(int $id)
     {
         return DB::table('profiles')->where('user_id', $id)->first();
     }

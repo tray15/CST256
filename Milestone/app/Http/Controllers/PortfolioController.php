@@ -90,6 +90,8 @@ class PortfolioController extends Controller
         $separation_reason = $request->get('separation');
         $user_id = session('userid');
 
+        $this->validateEmploymentForm($request);
+
         $job = new EmploymentModel($id, $company_name, $address, $phone, $job_title, $duties, $supervisor, $separation_reason, $start_date, $end_date, $user_id);
         $empService->saveEmployment($job);
         return redirect()->route('displayPortfolioPage');
@@ -139,6 +141,25 @@ class PortfolioController extends Controller
             'address' => 'Required | Between:4,100 | String',
             'phone' => 'Required | regex:/^(\+0?1\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/',
             'degree' => 'Required | Between:4,50 | String'
+        ];
+
+        // Run Data Validation Rules
+        $this->validate($request, $rules);
+    }
+
+    private function validateEmploymentForm(Request $request)
+    {
+        // Set up Data Validation for addEmployment Form
+        $rules = [
+            'start_date' => 'Required',
+            'end_date' => 'Required',
+            'name' => 'Required | Between:4,100 | String',
+            'address' => 'Required | Between:4,100 | String',
+            'phone' => 'Required | regex:/^(\+0?1\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/',
+            'title' => 'Required | Between:4,50 | String',
+            'duties' => 'Required | Between:4,1000 | String',
+            'supervisor' => 'Required | Between:4,100 | String',
+            'separation' => 'Required | Between:4,100 | String',
         ];
 
         // Run Data Validation Rules

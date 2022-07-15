@@ -3,6 +3,7 @@ namespace App\Models;
 
 class ProfileModel
 {
+    private $id;
 
     private $firstname;
 
@@ -39,6 +40,22 @@ class ProfileModel
         $this->phone = $phone;
         $this->email = $email;
         $this->user_id = $user_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**

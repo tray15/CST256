@@ -68,7 +68,7 @@
 			</div>
 			<div class="row m-2">
 				<div class="col-lg-4 mx-auto">
-					<input class="form-control" type="textarea" name="separation"
+					<input class="form-control" type="text" name="separation"
 						placeholder="Separation Reason" />
 				</div>
 				<div class="text-danger"><?php echo $errors->first('separation')?></div>

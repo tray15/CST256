@@ -19,7 +19,7 @@ class UserController extends Controller
         $service = new SecurityService();
         $username = $request->get("username");
         $password = $request->get('password');
-        $role = null;
+        $role = "user";
         $suspended = false;
 
         $this->validateForm($request);

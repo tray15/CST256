@@ -25,7 +25,7 @@ class ProfileController extends Controller
         $profileId = $service->saveProfile($profile);
 
         if ($profileId) {
-            return view('home');
+            return view('home')->with('firstname', $profile->getFirstname());
         } else {
             return view('loginFailed');
         }

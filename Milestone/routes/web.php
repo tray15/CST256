@@ -51,6 +51,21 @@ Route::post('/doCreateEmployment', 'PortfolioController@saveEmployment');
 Route::get('/updateEmployment/{id}', 'PortfolioController@updateEmploymentForm');
 Route::post('/updateEmployment/doUpdateEmployment', 'PortfolioController@doUpdateEmployment');
 Route::get('/deleteEmployment/{id}', 'PortfolioController@deleteEmployment');
+
+// Groups Routing
+Route::get('/userGroups', 'GroupController@displayGroupsPage')->name('displayGroupsPage');
+Route::get('/createGroup', 'GroupController@displayCreateGroupPage');
+Route::post('/doCreateGroup', 'GroupController@doCreateGroup');
+Route::get('/updateGroup/{id}', 'GroupController@updateGroupForm');
+Route::post('/updateGroup/doUpdateGroup', 'Groupcontroller@doUpdateGroup');
+Route::get('/deleteGroup/{id}', 'GroupController@deleteGroup');
+Route::get('/findGroup', 'GroupController@displayFindGroupPage');
+Route::get('/joinGroup/{id}', 'GroupController@joinGroup');
+Route::get('/leaveGroup/{id}', 'GroupController@leaveGroup');
+Route::get('/displayGroupPage/{id}', 'GroupController@displayGroupPage')->name('displayGroupPage');
+
+// Comments Routing
+Route::post('/submitComment', 'CommentsController@submitComment');
     
 //admin routing
 Route::get('/admin', 'AdminController@index');
