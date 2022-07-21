@@ -3,13 +3,20 @@ namespace App\Http\Controllers;
 
 use App\Models\ProfileModel;
 use App\Services\Business\ProfileService;
+use App\Services\Utility\MyLogger;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+    private $logger;
+
+    function __construct() {
+        $this->logger = new MyLogger();
+    }
 
     public function saveProfile(Request $request)
     {
+        $this->logger->info('Entering ProfileController.saveProfile()');
         $service = new ProfileService();
 
         $firstname = $request->get('firstname');
@@ -25,14 +32,17 @@ class ProfileController extends Controller
         $profileId = $service->saveProfile($profile);
 
         if ($profileId) {
+            $this->logger->info('Exiting ProfileController.saveProfile() : Save Successful');
             return view('home')->with('firstname', $profile->getFirstname());
         } else {
+            $this->logger->info('Exiting ProfileController.saveProfile() : Save Failed....');
             return view('loginFailed');
         }
     }
 
     private function validateForm(Request $request)
     {
+        $this->logger->info('Entering ProfileController.validateForm()');
         // Setup Data Validation Rules for Create Profile Form
         $rules = [
             'firstname' => 'Required | Between:4,10 | alpha',
@@ -44,5 +54,6 @@ class ProfileController extends Controller
 
         // Run Data Validation Rules
         $this->validate($request, $rules);
+        $this->logger->info('Exiting ProfileController.validateForm()');
     }
 }

@@ -75,3 +75,6 @@ Route::get('/admin', 'AdminController@index');
 Route::delete('/admin/deleteUser/{id}', 'AdminController@delete');
 Route::get('/admin/editUser/{id}', 'AdminController@edit');
 Route::put('/admin/doUserUpdate/{id}', 'AdminController@doUserUpdate');
+
+// Test Logging Service Route
+Route::get('/loggingservice', 'TestLoggingController@index');

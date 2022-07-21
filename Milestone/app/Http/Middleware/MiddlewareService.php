@@ -2,10 +2,16 @@
 
 namespace App\Http\Middleware;
 
+use App\Services\Utility\MyLogger;
 use Closure;
 
 class MiddlewareService
 {
+    private $logger;
+
+    function __construct() {
+        $this->logger = new MyLogger();
+    }
     /**
      * Handle an incoming request.
      *
@@ -16,7 +22,7 @@ class MiddlewareService
     public function handle($request, Closure $next)
     {
         $path = $request->path();
-        //$this->logger->info("Entering My Security Middleware in handle() at path: " . $path);
+        $this->logger->info("Entering My Security Middleware in handle() at path: " . $path);
 
         $secureCheck = false;
         if ($request->is('/') || $request->is('login') || $request->is('dologin') ||
@@ -28,7 +34,7 @@ class MiddlewareService
             $secureCheck = true;
         }
 
-        //$this->logger->info($secureCheck ? "Security Middleware in handle().....Needs Security" : "Security Middleware in handle().....No Security Required");
+        $this->logger->info($secureCheck ? "Security Middleware in handle().....Needs Security" : "Security Middleware in handle().....No Security Required");
 
         if (!$secureCheck)
         {
