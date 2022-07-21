@@ -8,11 +8,16 @@ use App\Services\Business\SecurityService;
 
 class LoginController extends Controller
 {
+    private $securityService;
+    private $profileService;
+
+    public function __construct() {
+        $this->securityService = new SecurityService();
+        $this->profileService = new ProfileService();
+    }
 
     public function index(Request $request)
     {
-        $securityService = new SecurityService();
-        $profileService = new ProfileService();
         $username = $request->input('username');
         $password = $request->input('password');
 
@@ -20,12 +25,12 @@ class LoginController extends Controller
         $this->validateForm($request);
 
         $user = new UserModel($username, $password, "", "");
-        $result = $securityService->login($user);
+        $result = $this->securityService->login($user);
 
         if ($result) {
             // return view('loginPassed')->with('username', $user);
-            $user = $securityService->findByUser($user);
-            $profile = $profileService->findByUserId($user->id);
+            $user = $this->securityService->findByUser($user);
+            $profile = $this->profileService->findByUserId($user->id);
             if ($profile) {
                 $request->session()->put('userid', $user->id);
                 $request->session()->put('username', $user->username);
@@ -37,6 +42,22 @@ class LoginController extends Controller
             }
         } else {
             return view('loginFailed')->with('username', $user);
+        }
+    }
+
+    public function logout() {
+        session()->invalidate();
+        return redirect(route('login'));
+    }
+
+    public function home() {
+        $profileId = session('profileid');
+        if($profileId != null){
+            $profile = $this->profileService->findById($profileId);
+            return view('home')->with('firstname', $profile->getFirstname());
+        }
+        else{
+            return redirect(route('login'));
         }
     }
 

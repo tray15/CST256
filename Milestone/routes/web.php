@@ -10,12 +10,15 @@
  * | contains the "web" middleware group. Now create something great!
  * |
  */
-// home page
 use Illuminate\Support\Facades\Route;
 
+// Landing page
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Home page
+Route::get('/home','LoginController@home');
 
 // registration routing
 Route::get('/register', function () {
@@ -26,9 +29,9 @@ Route::post('/doRegister', 'UserController@saveUser');
 // login routing
 Route::get('/login', function () {
     return view('login');
-});
+})->name('login');
 Route::post('/dologin', 'LoginController@index');
-
+Route::get('/logout', 'LoginController@logout');
 // Profile routing
 Route::get('/createProfile', function () {
     return view('createProfile')->with('id', session('userid'));
