@@ -78,3 +78,9 @@ Route::put('/admin/doUserUpdate/{id}', 'AdminController@doUserUpdate');
 
 // Test Logging Service Route
 Route::get('/loggingservice', 'TestLoggingController@index');
+
+// Job Search Routing
+Route::get('/jobSearch', 'JobSearchController@index');
+Route::post('/search', 'JobSearchController@search');
+Route::get('/jobDetails/{id}', 'JobSearchController@jobDetails');
+Route::get('/apply/{id}', 'JobSearchController@apply');

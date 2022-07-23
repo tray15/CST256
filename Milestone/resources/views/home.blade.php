@@ -22,7 +22,7 @@
         <div class="row m-1">
             <div class="col">
                 <div class="d-grid col-6 mx-auto">
-                    <a class="btn btn-info btn-lg" href="/">Placeholder Button</a>
+                    <a class="btn btn-info btn-lg" href="/jobSearch">Job Search</a>
                 </div>
             </div>
         </div>

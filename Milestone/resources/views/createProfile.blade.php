@@ -1,4 +1,5 @@
-@extends('layouts.appmaster') @section('title', 'Login Page')
+@extends('layouts.appmaster')
+@section('title', 'Login Page')
 @section('content')
 <div class="container-fluid text-center">
 	<h2 class="mt-5">Create Profile</h2>
