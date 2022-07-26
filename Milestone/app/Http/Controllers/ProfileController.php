@@ -1,4 +1,14 @@
 <?php
+/*
+ * CST-256 Milestone Project
+ * Version - 1
+ * Module - Member Profile
+ * Module Version - 1
+ * Programmer: Hiram Viezca
+ * Date 7/25/2022
+ * Synopsis: The ProfileController handles functions
+ * specific to creating user profiles.
+ * */
 namespace App\Http\Controllers;
 
 use App\Models\ProfileModel;
@@ -14,6 +24,10 @@ class ProfileController extends Controller
         $this->logger = new MyLogger();
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\View\View
+     */
     public function saveProfile(Request $request)
     {
         $this->logger->info('Entering ProfileController.saveProfile()');
@@ -40,6 +54,10 @@ class ProfileController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @return void
+     */
     private function validateForm(Request $request)
     {
         $this->logger->info('Entering ProfileController.validateForm()');

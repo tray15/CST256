@@ -1,4 +1,14 @@
 <?php
+/*
+ * CST-256 Milestone Project
+ * Version - 1
+ * Module - E-Portfolio
+ * Module Version - 1
+ * Programmer: Hiram Viezca
+ * Date 7/25/2022
+ * Synopsis: The EducationService defines the
+ * business logic for Education History
+ * */
 namespace App\Services\Business;
 
 use App\Models\EducationModel;
@@ -9,11 +19,19 @@ use function Sodium\add;
 
 class EducationService
 {
+    private $dao;
 
+    function __construct() {
+        $this->dao = new EducationDAO();
+    }
+
+    /**
+     * @param int $id
+     * @return array|null
+     */
     public function findByUserId(int $id)
     {
-        $dao = new EducationDAO();
-        $records = $dao->findByUserId($id);
+        $records = $this->dao->findByUserId($id);
         $models = [];
 
         if ($records) {
@@ -27,27 +45,39 @@ class EducationService
         }
     }
 
+    /**
+     * @param int $id
+     * @return mixed
+     */
     public function findById(int $id)
     {
-        $dao = new EducationDAO();
-        return $dao->findById($id);
+        return $this->dao->findById($id);
     }
 
+    /**
+     * @param EducationModel $edu
+     * @return mixed
+     */
     public function saveEducation(EducationModel $edu)
     {
-        $dao = new EducationDAO();
-        return $dao->saveEducation($edu);
+        return $this->dao->saveEducation($edu);
     }
 
+    /**
+     * @param EducationModel $edu
+     * @return mixed
+     */
     public function updateEducation(EducationModel $edu)
     {
-        $dao = new EducationDAO();
-        return $dao->updateEducation($edu);
+        return $this->dao->updateEducation($edu);
     }
 
+    /**
+     * @param int $id
+     * @return mixed
+     */
     public function deleteEducation(int $id)
     {
-        $dao = new EducationDAO();
-        $dao->deleteEducation($id);
+        return $this->dao->deleteEducation($id);
     }
 }

@@ -1,4 +1,14 @@
 <?php
+/*
+ * CST-256 Milestone Project
+ * Version - 1
+ * Module - Login and Registration
+ * Module Version - 1
+ * Programmer: Hiram Viezca & Tanner Ray
+ * Date 7/25/2022
+ * Synopsis: The LoginController handles functions
+ * specific to Logging in and out of the application.
+ * */
 namespace App\Http\Controllers;
 
 use App\Services\Business\ProfileService;
@@ -19,6 +29,10 @@ class LoginController extends Controller
         $this->logger = new MyLogger();
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function index(Request $request)
     {
         $this->logger->info('Entering LoginController.index()');
@@ -52,6 +66,9 @@ class LoginController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function logout() {
         $this->logger->info('Entering LoginController.logout()');
         session()->invalidate();
@@ -59,6 +76,9 @@ class LoginController extends Controller
         return redirect(route('login'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
     public function home() {
         $this->logger->info('Entering LoginController.home()');
         $profileId = session('profileid');
@@ -73,6 +93,10 @@ class LoginController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @return void
+     */
     private function validateForm(Request $request)
     {
         $this->logger->info('Entering LoginController.validateForm()');

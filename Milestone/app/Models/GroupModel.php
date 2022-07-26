@@ -1,5 +1,15 @@
 <?php
-
+/*
+ * CST-256 Milestone Project
+ * Version - 1
+ * Module - Affinity Groups
+ * Module Version - 1
+ * Programmer: Hiram Viezca
+ * Date 7/25/2022
+ * Synopsis: The GroupModel defines the
+ * Group Model object. Includes standard
+ * constructor and getters/setters.
+ * */
 namespace App\Models;
 
 class GroupModel

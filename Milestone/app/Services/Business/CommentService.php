@@ -1,5 +1,14 @@
 <?php
-
+/*
+ * CST-256 Milestone Project
+ * Version - 1
+ * Module - Affinity Groups
+ * Module Version - 1
+ * Programmer: Hiram Viezca
+ * Date 7/25/2022
+ * Synopsis: The CommentService defines the
+ * business logic for Comments
+ * */
 namespace App\Services\Business;
 
 use App\Models\CommentModel;
@@ -13,25 +22,19 @@ class CommentService
         return $this->commentsDAO = new CommentsDAO();
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function findByGroupId($id)
     {
         return $this->commentsDAO->findByGroupId($id);
-//        dd($records);
-//        $commentsList = [];
-//
-//        foreach ($records as $record) {
-//            $comment = new CommentModel(
-//                $record->id,
-//                $record->text,
-//                $record->created_at,
-//                $record->profile_id,
-//                $record->group_id
-//            );
-//            $commentsList[] = $comment;
-//        }
-//        return $commentsList;
     }
 
+    /**
+     * @param CommentModel $comment
+     * @return mixed
+     */
     public function submitComment(CommentModel $comment)
     {
         return $this->commentsDAO->submitComment($comment);

@@ -1,43 +1,38 @@
 <?php
+/*
+ * CST-256 Milestone Project
+ * Version - 1
+ * Module - E-Portfolio
+ * Module Version - 1
+ * Programmer: Hiram Viezca
+ * Date 7/25/2022
+ * Synopsis: The EducationModel defines the
+ * Education Model object. Includes standard
+ * constructor and getters/setters.
+ * */
 namespace App\Models;
 
 class EducationModel
 {
-
     private $id;
-
     private $school_name;
-
     private $address;
-
     private $phone;
-
     private $degree;
-
     private $start_date;
-
     private $end_date;
-
     private $user_id;
 
     /**
      *
-     * @param
-     *            $id
-     * @param
-     *            $school_name
-     * @param
-     *            $address
-     * @param
-     *            $phone
-     * @param
-     *            $degree
-     * @param
-     *            $start_date
-     * @param
-     *            $end_date
-     * @param
-     *            $user_id
+     * @param $id
+     * @param $school_name
+     * @param $address
+     * @param $phone
+     * @param $degree
+     * @param $start_date
+     * @param $end_date
+     * @param $user_id
      */
     public function __construct($id, $school_name, $address, $phone, $degree, $start_date, $end_date, $user_id)
     {

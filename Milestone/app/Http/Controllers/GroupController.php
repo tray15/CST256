@@ -1,4 +1,14 @@
 <?php
+/*
+ * CST-256 Milestone Project
+ * Version - 1
+ * Module - Affinity Groups
+ * Module Version - 1
+ * Programmer: Hiram Viezca
+ * Date 7/25/2022
+ * Synopsis: The GroupController handles functions
+ * specific to creating, joining, leaving, and deleting groups
+ * */
 
 namespace App\Http\Controllers;
 
@@ -24,6 +34,9 @@ class GroupController extends Controller
         $this->logger = new MyLogger();
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\View\View
+     */
     public function displayGroupsPage() {
         $this->logger->info('Entering GroupController.displayGroupsPage()');
         $groupList = $this->groupService->findByProfileId(session('profileid'));
@@ -32,12 +45,19 @@ class GroupController extends Controller
         return view('userGroups', compact('groupList', 'joinedGroupList'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\View\View
+     */
     public function displayCreateGroupPage() {
         $this->logger->info('Entering GroupController.displayCreateGroupPage()');
         $this->logger->info('Exiting GroupController.displayCreateGroupPage()');
         return view('createGroup');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function doCreateGroup(Request $request){
         $this->logger->info('Entering GroupController.doCreateGroup()');
         $profile = $this->profileService->findByUserId(session('userid'));
@@ -54,6 +74,10 @@ class GroupController extends Controller
         return redirect(route('displayGroupsPage'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\View\View
+     */
     public function updateGroupForm($id) {
         $this->logger->info('Entering GroupController.updateGroupForm()');
         $group = $this->groupService->findById($id);
@@ -61,6 +85,10 @@ class GroupController extends Controller
         return view('updateGroupForm')->with('group', $group);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function doUpdateGroup(Request $request) {
         $this->logger->info('Entering GroupController.doUpdateGroup()');
         $id = $request->id;
@@ -77,6 +105,10 @@ class GroupController extends Controller
         return redirect(route('displayGroupsPage'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function deleteGroup($id) {
         $this->logger->info('Entering GroupController.deleteGroup()');
         $this->groupService->deleteGroup($id);
@@ -84,6 +116,9 @@ class GroupController extends Controller
         return redirect(route('displayGroupsPage'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\View\View
+     */
     public function displayFindGroupPage() {
         $this->logger->info('Entering GroupController.displayFindGroupPage()');
         $groups = $this->groupService->findAll();
@@ -91,6 +126,10 @@ class GroupController extends Controller
         return view('findGroup')->with('groups', $groups);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function joinGroup($id) {
         $this->logger->info('Entering GroupController.joinGroup()');
         $this->groupService->joinGroup($id);
@@ -98,6 +137,10 @@ class GroupController extends Controller
         return redirect(route('displayGroupsPage'));
     }
 
+    /**
+     * @param $group_id
+     * @return \Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function leaveGroup($group_id) {
         $this->logger->info('Entering GroupController.leaveGroup()');
         $this->groupService->leaveGroup($group_id, session('profileid') );
@@ -105,6 +148,10 @@ class GroupController extends Controller
         return redirect(route('displayGroupsPage'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\View\View
+     */
     public function displayGroupPage($id) {
         $this->logger->info('Entering GroupController.displayGroupPage()');
         $group = $this->groupService->findById($id);
@@ -118,6 +165,10 @@ class GroupController extends Controller
         return view('groupHomePage', compact('group', 'memberList','comments'));
     }
 
+    /**
+     * @param Request $request
+     * @return void
+     */
     public function validateCreateGroupForm(Request $request) {
         $this->logger->info('Entering GroupController.validateCreateGroupForm()');
         $rules = [

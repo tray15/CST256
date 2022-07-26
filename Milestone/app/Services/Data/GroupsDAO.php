@@ -1,5 +1,14 @@
 <?php
-
+/*
+ * CST-256 Milestone Project
+ * Version - 1
+ * Module - Affinity Groups
+ * Module Version - 1
+ * Programmer: Hiram Viezca
+ * Date 7/25/2022
+ * Synopsis: The GroupsDAO handles the
+ * database interaction for Groups
+ * */
 namespace App\Services\Data;
 
 use App\Models\GroupModel;
@@ -9,11 +18,18 @@ use mysql_xdevapi\Session;
 
 class GroupsDAO
 {
+    /**
+     * @return mixed
+     */
     public function findAll(){
         return DB::table('groups')
             ->where('profile_id', '!=', session('profileid'))->get();
     }
 
+    /**
+     * @param GroupModel $groupModel
+     * @return mixed
+     */
     public function saveGroup(GroupModel $groupModel)
     {
         return DB::table('groups')->insertGetId([
@@ -24,16 +40,28 @@ class GroupsDAO
         ]);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function findByProfileId($id)
     {
         return DB::table('groups')->where('profile_id', $id)->get();
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function findById($id)
     {
         return DB::table('groups')->where('id', $id)->first();
     }
 
+    /**
+     * @param GroupModel $groupModel
+     * @return mixed
+     */
     public function updateGroup(GroupModel $groupModel)
     {
         return DB::table('groups')->where('id', $groupModel->getId())->update([
@@ -44,11 +72,19 @@ class GroupsDAO
         ]);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function deleteGroup($id)
     {
         return DB::table('groups')->delete($id);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function joinGroup($id)
     {
         return DB::table('group_membership')->insertGetId([
@@ -57,6 +93,10 @@ class GroupsDAO
         ]);
     }
 
+    /**
+     * @param $session
+     * @return mixed
+     */
     public function findJoinedGroups($session)
     {
         $membershipList = DB::table('groups')
@@ -68,6 +108,11 @@ class GroupsDAO
         return $membershipList;
     }
 
+    /**
+     * @param $id
+     * @param $session
+     * @return mixed
+     */
     public function checkIfAlreadyJoined($id, $session)
     {
         return DB::table('group_membership')->where([
@@ -76,6 +121,11 @@ class GroupsDAO
         ])->first();
     }
 
+    /**
+     * @param $group_id
+     * @param $profile_id
+     * @return mixed
+     */
     public function leaveGroup($group_id, $profile_id)
     {
         $row = DB::table('group_membership')
@@ -84,6 +134,10 @@ class GroupsDAO
         return DB::table('group_membership')->delete($row->id);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function findGroupMembers($id)
     {
         return DB::table('group_membership')->where('group_id', $id)->select('profile_id')->get();

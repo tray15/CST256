@@ -1,36 +1,35 @@
 <?php
+/*
+ * CST-256 Milestone Project
+ * Version - 1
+ * Module - Member Profile
+ * Module Version - 1
+ * Programmer: Hiram Viezca
+ * Date 7/25/2022
+ * Synopsis: The ProfileModel defines the
+ * Profile Model object. Includes standard
+ * constructor and getters/setters.
+ * */
 namespace App\Models;
 
 class ProfileModel
 {
     private $id;
-
     private $firstname;
-
     private $lastname;
-
     private $address;
-
     private $phone;
-
     private $email;
-
     private $user_id;
 
     /**
      *
-     * @param
-     *            $firstname
-     * @param
-     *            $lastname
-     * @param
-     *            $address
-     * @param
-     *            $phone
-     * @param
-     *            $email
-     * @param
-     *            $user_id
+     * @param $firstname
+     * @param $lastname
+     * @param $address
+     * @param $phone
+     * @param $email
+     * @param $user_id
      */
     public function __construct($firstname, $lastname, $address, $phone, $email, $user_id)
     {

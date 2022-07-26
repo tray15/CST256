@@ -1,4 +1,15 @@
 <?php
+/*
+ * CST-256 Milestone Project
+ * Version - 1
+ * Module - Member E-Portfolio
+ * Module Version - 1
+ * Programmer: Hiram Viezca
+ * Date 7/25/2022
+ * Synopsis: The PortfolioController handles functions
+ * specific to creating, updating, and deleting
+ * Employment and Education history
+ * */
 namespace App\Http\Controllers;
 
 use App\Models\EducationModel;
@@ -16,6 +27,9 @@ class PortfolioController extends Controller
         $this->logger = new MyLogger();
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\View\View
+     */
     public function displayPortfolioPage()
     {
         $this->logger->info('Entering PortfolioController.displayPortfolioPage()');
@@ -31,6 +45,10 @@ class PortfolioController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function saveEducation(Request $request)
     {
         $this->logger->info('Entering PortfolioController.saveEducation()');
@@ -52,6 +70,10 @@ class PortfolioController extends Controller
         return redirect()->route('displayPortfolioPage');
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\View\View
+     */
     public function updateEducationForm($id)
     {
         $this->logger->info('Entering PortfolioController.updateEducationForm()');
@@ -61,6 +83,10 @@ class PortfolioController extends Controller
         return view('updateEducationForm')->with('record', $educationRecord);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function doUpdateEducation(Request $request)
     {
         $this->logger->info('Entering PortfolioController.doUpdateEducation()');
@@ -81,6 +107,10 @@ class PortfolioController extends Controller
         return redirect()->route('displayPortfolioPage');
     }
 
+    /**
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteEducation(int $id)
     {
         $this->logger->info('Entering PortfolioController.deleteEducation()');
@@ -90,6 +120,10 @@ class PortfolioController extends Controller
         return redirect()->route('displayPortfolioPage');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function saveEmployment(Request $request)
     {
         $this->logger->info('Entering PortfolioController.saveEmployment()');
@@ -114,6 +148,10 @@ class PortfolioController extends Controller
         return redirect()->route('displayPortfolioPage');
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\View\View
+     */
     public function updateEmploymentForm($id)
     {
         $this->logger->info('Entering PortfolioController.updateEmploymentForm()');
@@ -123,6 +161,10 @@ class PortfolioController extends Controller
         return view('updateEmploymentForm')->with('record', $jobRecord);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function doUpdateEmployment(Request $request)
     {
         $this->logger->info('Entering PortfolioController.doUpdateEmployment()');
@@ -147,6 +189,10 @@ class PortfolioController extends Controller
         return redirect()->route('displayPortfolioPage');
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteEmployment($id)
     {
         $this->logger->info('Entering PortfolioController.deleteEmployment()');
@@ -156,6 +202,10 @@ class PortfolioController extends Controller
         return redirect()->route('displayPortfolioPage');
     }
 
+    /**
+     * @param Request $request
+     * @return void
+     */
     private function validateSchoolForm(Request $request)
     {
         $this->logger->info('Entering PortfolioController.validateSchoolForm()');
@@ -174,6 +224,10 @@ class PortfolioController extends Controller
         $this->logger->info('Exiting PortfolioController.validateSchoolForm()');
     }
 
+    /**
+     * @param Request $request
+     * @return void
+     */
     private function validateEmploymentForm(Request $request)
     {
         $this->logger->info('Entering PortfolioController.validateEmploymentForm()');

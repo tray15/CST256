@@ -1,55 +1,46 @@
 <?php
+/*
+ * CST-256 Milestone Project
+ * Version - 1
+ * Module - E-Portfolio
+ * Module Version - 1
+ * Programmer: Hiram Viezca
+ * Date 7/25/2022
+ * Synopsis: The EmploymentModel defines the
+ * Employment Model object. Includes standard
+ * constructor and getters/setters.
+ * */
+
 namespace App\Models;
 
 class EmploymentModel
 {
 
     private $id;
-
     private $company_name;
-
     private $address;
-
     private $phone;
-
     private $job_title;
-
     private $duties;
-
     private $supervisor;
-
     private $separation_reason;
-
     private $start_date;
-
     private $end_date;
-
     private $userid;
 
     /**
      *
-     * @param
-     *            $id
-     * @param
-     *            $company_name
-     * @param
-     *            $address
-     * @param
-     *            $phone
-     * @param
-     *            $job_title
-     * @param
-     *            $duties
-     * @param
-     *            $supervisor
-     * @param
-     *            $separation_reason
-     * @param
-     *            $start_date
-     * @param
-     *            $end_date
-     * @param
-     *            $userid
+     * @param $id
+     * @param $company_name
+     * @param $address
+     * @param $phone
+     * @param $job_title
+     * @param $duties
+     * @param $supervisor
+     * @param $separation_reason
+     * @param $start_date
+     * @param $end_date
+     * @param $userid
      */
     public function __construct($id, $company_name, $address, $phone, $job_title, $duties, $supervisor, $separation_reason, $start_date, $end_date, $userid)
     {

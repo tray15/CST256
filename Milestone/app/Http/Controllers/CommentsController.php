@@ -1,4 +1,14 @@
 <?php
+/*
+ * CST-256 Milestone Project
+ * Version - 1
+ * Module - Affinity Groups
+ * Module Version - 1
+ * Programmer: Hiram Viezca
+ * Date 7/25/2022
+ * Synopsis: The CommentController handles functions
+ * specific to comments made by users on a group home page
+ * */
 
 namespace App\Http\Controllers;
 
@@ -18,6 +28,10 @@ class CommentsController extends Controller
         $this->logger = new MyLogger();
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function submitComment(Request $request): \Illuminate\Http\RedirectResponse
     {
         $this->logger->info('Entering CommentsController.submitComment()');

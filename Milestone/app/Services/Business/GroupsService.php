@@ -1,5 +1,14 @@
 <?php
-
+/*
+ * CST-256 Milestone Project
+ * Version - 1
+ * Module - Affinity Groups
+ * Module Version - 1
+ * Programmer: Hiram Viezca
+ * Date 7/25/2022
+ * Synopsis: The GroupService defines the
+ * business logic for Affinity Groups
+ * */
 namespace App\Services\Business;
 
 use App\Models\GroupModel;
@@ -15,6 +24,9 @@ class GroupsService
         $this->groupDAO = new GroupsDAO();
     }
 
+    /**
+     * @return array
+     */
     public function findAll(): array
     {
         $groups = $this->groupDAO->findAll();
@@ -32,11 +44,19 @@ class GroupsService
         return $groupList;
     }
 
+    /**
+     * @param GroupModel $groupModel
+     * @return mixed
+     */
     public function saveGroup(GroupModel $groupModel)
     {
         return $this->groupDAO->saveGroup($groupModel);
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public function findByProfileId($id): array
     {
         $groups = $this->groupDAO->findByProfileId($id);
@@ -54,6 +74,10 @@ class GroupsService
         return $groupList;
     }
 
+    /**
+     * @param $id
+     * @return GroupModel
+     */
     public function findById($id)
     {
         $record = $this->groupDAO->findById($id);
@@ -67,16 +91,28 @@ class GroupsService
         return $group;
     }
 
+    /**
+     * @param GroupModel $groupModel
+     * @return mixed
+     */
     public function updateGroup(GroupModel $groupModel)
     {
         return $this->groupDAO->updateGroup($groupModel);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function deleteGroup($id)
     {
         return $this->groupDAO->deleteGroup($id);
     }
 
+    /**
+     * @param $id
+     * @return null
+     */
     public function joinGroup($id)
     {
         $alreadyJoined = $this->groupDAO->checkIfAlreadyJoined($id, session('profileid'));
@@ -87,6 +123,10 @@ class GroupsService
         return $this->groupDAO->joinGroup($id);
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public function findJoinedGroups($id): array
     {
         $memberships = $this->groupDAO->findJoinedGroups($id);
@@ -104,11 +144,20 @@ class GroupsService
         return $joinedGroups;
     }
 
+    /**
+     * @param $group_id
+     * @param $profile_id
+     * @return mixed
+     */
     public function leaveGroup($group_id, $profile_id)
     {
         return $this->groupDAO->leaveGroup($group_id, $profile_id);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function findGroupMembers($id)
     {
         return $members = $this->groupDAO->findGroupMembers($id);
